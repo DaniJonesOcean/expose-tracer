@@ -13,6 +13,10 @@ load('colormaps/cividis.txt')
 load('colormaps/qual6.txt')
 cmp_qual = qual6./256;
 
+%% Select transparency approach
+
+use_alpha = 0.0;
+
 %% Load and process data
 
 % load matlab file
@@ -65,14 +69,18 @@ y1D = mod(y1D,1);
 figPos = [455   139   667   607];
 figure('color','w','position',figPos);
 m_proj('stereographic','lat',-90,'long',25,'radius',62);
-m_pcolor(XC,YC,tracer_onecolor_2D)
-%-
-% uncomment to use a version that features alpha shading
-%m_pcolor(XC,YC,tracer_onecolor_2D,...
-%            'FaceAlpha','flat',...
-%            'AlphaDataMapping','none',...
-%            'AlphaData',alpha)
-%-
+
+% make plot, either using alpha or not
+if use_alpha==1.0
+    m_pcolor(XC,YC,tracer_onecolor_2D,...
+            'FaceAlpha','flat',...
+            'AlphaDataMapping','none',...
+            'AlphaData',alpha)
+else
+    m_pcolor(XC,YC,tracer_onecolor_2D)
+end
+
+% colormaps and such
 colormap(cmp_qual)
 caxis([0 6])
 m_coast('patch',[.5 .5 .5],'edgecolor','none');
