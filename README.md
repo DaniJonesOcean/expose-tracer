@@ -1,7 +1,7 @@
 # expose-tracer
 This repository contains code and data from a set of passive tracer experiments [Fig. 4, Jones et al. (2016)]. This figure has been included as part of a review paper on ventilation (Morrison et al., 2021) 
 
-![image](https://user-images.githubusercontent.com/11757453/116900047-39057a00-ac30-11eb-9215-7d76ef652ddf.png)
+![trac](https://user-images.githubusercontent.com/11757453/119420024-63100080-bcf3-11eb-8ac2-4a8852c75301.png)
 
 ## Requirements for Matlab code
 - Matlab 2018b
