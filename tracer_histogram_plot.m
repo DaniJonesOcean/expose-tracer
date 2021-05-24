@@ -45,12 +45,30 @@ tracer_onecolor(:,:,i) = A; %#ok<*SAGROW>
 % single 
 tracer_onecolor_2D = squeeze(max(tracer_onecolor,[],3));
 
+% alpha
+alpha = squeeze(nansum(tracer_histogram,3));
+alpha = mod(alpha,1);
+alpha = alpha./max(alpha(:));
+
+% the distribution is peaked around the release sites
+% this scaling helps bring out the overall tracer pattern
+% increase this value for a more saturated display
+alpha = 2.75.*alpha;
+
+%% Scaling for alpha
+
+y1D = reshape(tracer_onecolor_2D,[2160*320 1]);
+y1D = mod(y1D,1);
+
 %% Single plot, one color each
 
 figPos = [455   139   667   607];
 figure('color','w','position',figPos);
 m_proj('stereographic','lat',-90,'long',25,'radius',62);
-m_pcolor(XC,YC,tracer_onecolor_2D)
+m_pcolor(XC,YC,tracer_onecolor_2D,...
+            'FaceAlpha','flat',...
+            'AlphaDataMapping','none',...
+            'AlphaData',alpha)
 colormap(cmp_qual)
 caxis([0 6])
 m_coast('patch',[.5 .5 .5],'edgecolor','none');
@@ -115,7 +133,7 @@ m_grid('xtick',-180:60:180,...
     'linest',':');
 
 % save figure
-%set(gcf,'Renderer','Painters');   
+set(gcf,'Renderer','Painters');   
 
 
 %% Single plot, layers - single color, 
