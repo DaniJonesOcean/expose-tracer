@@ -2,3 +2,5 @@ data_pre/lat_stats
 data_pre/lon_stats
 data_pre/potential
 data_pre/tracer
+.ipynb_checkpoints/
+*.m~
