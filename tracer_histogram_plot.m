@@ -9,14 +9,14 @@ clear
 close all
 
 % load colormaps
-load('cividis.txt')
-load('qual6.txt')
+load('colormaps/cividis.txt')
+load('colormaps/qual6.txt')
 cmp_qual = qual6./256;
 
 %% Load and process data
 
 % load matlab file
-load('expose_tracer_histograms.mat')
+load('data_in/expose_tracer_histograms.mat')
 
 % single fields
 tracer_field = squeeze(nansum(tracer_histogram,3));
