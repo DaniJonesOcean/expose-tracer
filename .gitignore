@@ -4,3 +4,5 @@ data_pre/potential
 data_pre/tracer
 .ipynb_checkpoints/
 *.m~
+
+notebooks/Reproduce_colorbar_issue.ipynb
